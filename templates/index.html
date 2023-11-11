@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Helmet Detection</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+            body {
+        font-family: Arial, sans-serif;
+        background-color: #292b38; 
+        color: #ffffff; 
+        margin: 0;
+        padding: 0;
+    }
+
+    h1 {
+        text-align: center;
+        padding: 20px;
+        background-color: #1a1d27; 
+    }
+
+    form {
+        text-align: center;
+        padding: 20px;
+    }
+
+    input[type="file"] {
+        background-color: #39414a; 
+        color: #ffffff;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+    }
+
+    input[type="submit"] {
+        background-color: #4ea7d1; 
+        color: #ffffff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #368ebf; 
+    }
+
+    #result {
+        text-align: center;
+        display: none;
+        padding: 20px;
+    }
+
+    #helmet-image {
+        border: 5px solid #4ea7d1; 
+        max-width: 50%;
+    }
+
+
+    </style>
+</head>
+<body>
+    <h1>Helmet Detection</h1>
+    <form id="upload-form" enctype="multipart/form-data">
+        <input type="file" name="file" id="file">
+        <input type="submit" value="Upload and Detect Helmet">
+    </form>
+    <div id="result" style="display: none;">
+        <h2>Detected Helmet:</h2>
+        <img id="helmet-image" src="" alt="Helmet Detection Result">
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#upload-form").on('submit', function (e) {
+                e.preventDefault();
+                var formData = new FormData(this);
+                $.ajax({
+                    type: 'POST',
+                    url: '/upload',
+                    data: formData,
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    success: function (data) {
+                        $('#helmet-image').attr('src', data.helmet_image_path);
+                        $('#result').show();
+                    },
+                    error: function (data) {
+                        console.log('Error:', data);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

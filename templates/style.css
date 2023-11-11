@@ -1,0 +1,53 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #292b38; /* Dark background color */
+    color: #ffffff; /* White text color */
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    padding: 20px;
+    background-color: #1a1d27; /* Dark blue background for header */
+}
+
+form {
+    text-align: center;
+    padding: 20px;
+}
+
+input[type="file"] {
+    background-color: #39414a; /* Dark blue background for file input */
+    color: #ffffff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+input[type="submit"] {
+    background-color: #4ea7d1; /* Light blue background for the submit button */
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #368ebf; /* Darker blue on hover */
+}
+
+#result {
+    text-align: center;
+    display: none;
+    padding: 20px;
+}
+
+#helmet-image {
+    border: 5px solid #4ea7d1; /* Light blue border for the image */
+    max-width: 100%;
+}
+
+/* Additional styles or overrides can be added here */
